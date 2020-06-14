@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Square from './Square'
 
 
 export default class Board extends Component {
@@ -8,6 +9,7 @@ export default class Board extends Component {
         return (
             <View style={styles.container} >
                 <Text> First page</Text>
+                <Square />
             </View>
         )
     }
