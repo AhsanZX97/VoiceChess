@@ -9,7 +9,8 @@ export default class Board extends Component {
         return (
             <View style={styles.container} >
                 <Text> First page</Text>
-                <Square />
+                <Square shade = "rgba(187,190,100, 0.8)"/>
+                <Square shade = "rgba(234,240,206, 0.8)"/>
             </View>
         )
     }
@@ -23,3 +24,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+
+// rgba(234,240,206, 0.8)  rgba(187,190,100, 0.8)

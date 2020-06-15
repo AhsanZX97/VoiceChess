@@ -1,20 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function Square(props) {
     return (
         <View>
-            <Button
+            <TouchableOpacity
                 onClick={props.onClick}
-                style={styles.square}
-                title="wtf">
-            </Button>
+                style= {{
+                    backgroundColor: props.shade,
+                    borderWidth: 1,
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    lineHeight: 34,
+                    height: 48,
+                    marginRight: -1,
+                    marginTop: -1,
+                    textAlign: 'left',
+                    width: 48
+                }}
+                >
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    square: {
+/*
         backgroundColor: 'rgba(52, 52, 52, 0.8)',
         borderWidth: 1,
         fontSize: 24,
@@ -26,5 +35,4 @@ const styles = StyleSheet.create({
         padding: '0',
         textAlign: 'left',
         width: 48
-    }
-});
+*/
