@@ -1,4 +1,4 @@
-import Piece from './piece.js';
+import Piece from './Piece';
 
 export default class King extends Piece {
   constructor(player) {

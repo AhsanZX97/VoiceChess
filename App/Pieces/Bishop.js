@@ -1,4 +1,4 @@
-import Piece from './Piece.js/index.js';
+import Piece from './Piece';
 
 export default class Bishop extends Piece {
     constructor(player) {

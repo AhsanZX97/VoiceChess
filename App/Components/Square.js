@@ -8,7 +8,6 @@ export default function Square(props) {
                 onClick={props.onClick}
                 style= {{
                     backgroundColor: props.shade,
-                    borderWidth: 1,
                     fontSize: 24,
                     fontWeight: 'bold',
                     lineHeight: 34,
@@ -16,7 +15,8 @@ export default function Square(props) {
                     marginRight: -1,
                     marginTop: -1,
                     textAlign: 'left',
-                    width: 48
+                    width: 48,
+                    backgroundImage: props.style
                 }}
                 >
             </TouchableOpacity>
