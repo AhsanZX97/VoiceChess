@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
-import SvgUri from 'react-native-svg-uri';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 export default function Square(props) {
@@ -20,13 +21,9 @@ export default function Square(props) {
                     width: 48,
                 }}
             >
-                <SvgUri
-                    width="48"
-                    height="48"
-                    source={{ uri: 'https://image.flaticon.com/icons/svg/888/888704.svg' }}
-                />
+            
             </TouchableOpacity>
-
+            
         </View>
     );
 }
