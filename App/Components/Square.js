@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
+import SvgUri from 'react-native-svg-uri';
+
 
 export default function Square(props) {
     return (
         <View>
             <TouchableOpacity
                 onClick={props.onClick}
-                style= {{
+                style={{
                     backgroundColor: props.shade,
                     fontSize: 24,
                     fontWeight: 'bold',
@@ -16,10 +18,15 @@ export default function Square(props) {
                     marginTop: -1,
                     textAlign: 'left',
                     width: 48,
-                    backgroundImage: props.style
                 }}
-                >
+            >
+                <SvgUri
+                    width="48"
+                    height="48"
+                    source={{ uri: 'https://image.flaticon.com/icons/svg/888/888704.svg' }}
+                />
             </TouchableOpacity>
+
         </View>
     );
 }
