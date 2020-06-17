@@ -1,10 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-
+import { Icon } from 'react-native-elements'
 
 export default function Square(props) {
+    var piece;
+    if (props.style) {
+        piece = (
+            <Icon
+                name={props.style.name}
+                type='font-awesome-5'
+                color={props.style.colour} />
+        )
+    }
     return (
         <View>
             <TouchableOpacity
@@ -21,9 +28,11 @@ export default function Square(props) {
                     width: 48,
                 }}
             >
-            
+                {piece}
+
             </TouchableOpacity>
-            
+
+
         </View>
     );
 }

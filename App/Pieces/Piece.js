@@ -1,6 +1,9 @@
 export default class Piece {
-    constructor(player, iconUrl) {
+    constructor(player, iconName, iconColour) {
         this.player = player;
-        this.style = { uri: iconUrl }
+        this.style = {
+            name: iconName,
+            colour: iconColour,
+        }
     }
 }
