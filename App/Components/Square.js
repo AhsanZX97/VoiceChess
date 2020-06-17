@@ -6,10 +6,17 @@ export default function Square(props) {
     var piece;
     if (props.style) {
         piece = (
+            <View style ={{
+                flex: 1,
+                justifyContent: 'flex-end',
+                marginBottom: 2
+            }}>
             <Icon
                 name={props.style.name}
                 type='font-awesome-5'
-                color={props.style.colour} />
+                color={props.style.colour} 
+                size = {30}/>
+            </View>
         )
     }
     return (
