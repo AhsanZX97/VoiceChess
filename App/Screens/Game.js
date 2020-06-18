@@ -5,42 +5,61 @@ import Helper from '../Helper'
 
 export default class Game extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            squares: Helper(),
-            whiteFallenSoldiers: [],
-            blackFallenSoldiers: [],
-            player: 1,
-            sourceSelection: -1,
-            status: '',
-            turn: 'white'
-        }
+  constructor() {
+    super();
+    this.state = {
+      squares: Helper(),
+      whiteFallenSoldiers: [],
+      blackFallenSoldiers: [],
+      player: 1,
+      sourceSelection: -1,
+      status: '',
+      turn: 'white'
     }
+  }
 
-    handleClick(i){
-        console.log(i)
-    }
-    render() {
+  handleClick(i) {
+    const squares = this.state.squares.slice();
 
-        return (
-            <View style={styles.container} >
-                <Board
-                    squares={this.state.squares}
-                    onClick={(i) => this.handleClick(i)}
-                />
-            </View>
-        );
+    console.log("handled click")
+
+    if (this.state.sourceSelection === -1) {
+      if (!squares[i] || squares[i].player !== this.state.player) {
+        this.setState({ status: "Wrong selection. Choose player " + this.state.player + " pieces." });
+        console.log(this.state.status)
+        squares[i] ? delete squares[i].style.backgroundColor : null;
+      }
+      else {
+        squares[i].style = { ...squares[i].style, backgroundColor: "RGB(111,143,114)" }; 
+        this.setState({
+          status: "Choose destination for the selected piece",
+          sourceSelection: i
+        });
+        console.log(this.state.status)
+      }
     }
+  }
+
+  render() {
+
+    return (
+      <View style={styles.container} >
+        <Board
+          squares={this.state.squares}
+          onClick={(i) => this.handleClick(i)}
+        />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 /*

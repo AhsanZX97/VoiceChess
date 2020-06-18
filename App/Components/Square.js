@@ -36,7 +36,6 @@ export default function Square(props) {
                 }}
             >
                 {piece}
-
             </TouchableOpacity>
 
 
