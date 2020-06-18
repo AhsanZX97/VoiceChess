@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Board from '../Components/Board'
 import Helper from '../Helper'
+import { Icon } from 'react-native-elements'
 
 export default class Game extends Component {
 
@@ -16,6 +17,7 @@ export default class Game extends Component {
       status: '',
       turn: 'white'
     }
+
   }
 
   handleClick(i) {
@@ -30,7 +32,7 @@ export default class Game extends Component {
         squares[i] ? delete squares[i].style.backgroundColor : null;
       }
       else {
-        squares[i].style = { ...squares[i].style, backgroundColor: "RGB(111,143,114)" }; 
+        squares[i].style = { ...squares[i].style, backgroundColor: "RGB(111,143,114)" };
         this.setState({
           status: "Choose destination for the selected piece",
           sourceSelection: i
@@ -44,10 +46,26 @@ export default class Game extends Component {
 
     return (
       <View style={styles.container} >
+        <Icon
+          name="microphone"
+          type='font-awesome-5'
+          color= "black"
+          size={50} 
+          containerStyle={{
+            marginBottom: 30
+          }}/>
         <Board
           squares={this.state.squares}
           onClick={(i) => this.handleClick(i)}
         />
+        <Icon
+          name="microphone"
+          type='font-awesome-5'
+          color= "black"
+          size={50} 
+          containerStyle={{
+            marginTop: 30
+          }}/>
       </View>
     );
   }
