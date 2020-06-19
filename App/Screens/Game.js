@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import Board from '../Components/Board'
 import Helper from '../Helper'
 import Voice from '@react-native-community/voice';
@@ -16,7 +16,10 @@ export default class Game extends Component {
       player: 1,
       sourceSelection: -1,
       status: '',
-      turn: 'white'
+      turn: 'white',
+      recognized: '',
+      started: '',
+      results: ["test"]
     }
     Voice.onSpeechStart = this.onSpeechStart.bind(this)
     Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this)
@@ -27,16 +30,33 @@ export default class Game extends Component {
     this.setState({
       started: '√',
     });
+    console.log("onspeechstart")
   }
   onSpeechRecognized(e) {
     this.setState({
       recognized: '√',
     });
+    console.log("onspeechrecognised")
   }
   onSpeechResults(e) {
     this.setState({
       results: e.value,
     });
+    console.log("onspeechresults")
+  }
+
+  async _startRecognition(e) {
+    this.setState({
+      recognized: '',
+      started: '',
+      results: [],
+    });
+    try {
+      console.log("in try")
+      await Voice.start('en-US');
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   handleClick(i) {
@@ -77,14 +97,15 @@ export default class Game extends Component {
           squares={this.state.squares}
           onClick={(i) => this.handleClick(i)}
         />
-        <Icon
-          name="microphone"
-          type='font-awesome-5'
-          color="black"
-          size={50}
-          containerStyle={{
-            marginTop: 30
-          }} />
+        <Button
+          title="Voice"
+          onPress={this._startRecognition.bind(this)}
+          style={{
+            marginBottom: 30
+          }}
+        />
+        {this.state.results.map((result, index) => <Text> {result}</Text> )}
+
       </View>
     );
   }
@@ -242,6 +263,13 @@ export default class Game extends React.Component {
   }
 }
 
-
+        <Icon
+          name="microphone"
+          type='font-awesome-5'
+          color="black"
+          size={50}
+          containerStyle={{
+            marginTop: 30
+          }} />
 
 */
