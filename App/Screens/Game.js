@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Board from '../Components/Board'
 import Helper from '../Helper'
+import Voice from '@react-native-community/voice';
 import { Icon } from 'react-native-elements'
 
 export default class Game extends Component {
@@ -17,7 +18,25 @@ export default class Game extends Component {
       status: '',
       turn: 'white'
     }
+    Voice.onSpeechStart = this.onSpeechStart.bind(this)
+    Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this)
+    Voice.onSpeechResults = this.onSpeechResults.bind(this)
+  }
 
+  onSpeechStart(e) {
+    this.setState({
+      started: '√',
+    });
+  }
+  onSpeechRecognized(e) {
+    this.setState({
+      recognized: '√',
+    });
+  }
+  onSpeechResults(e) {
+    this.setState({
+      results: e.value,
+    });
   }
 
   handleClick(i) {
@@ -49,11 +68,11 @@ export default class Game extends Component {
         <Icon
           name="microphone"
           type='font-awesome-5'
-          color= "black"
-          size={50} 
+          color="black"
+          size={50}
           containerStyle={{
             marginBottom: 30
-          }}/>
+          }} />
         <Board
           squares={this.state.squares}
           onClick={(i) => this.handleClick(i)}
@@ -61,11 +80,11 @@ export default class Game extends Component {
         <Icon
           name="microphone"
           type='font-awesome-5'
-          color= "black"
-          size={50} 
+          color="black"
+          size={50}
           containerStyle={{
             marginTop: 30
-          }}/>
+          }} />
       </View>
     );
   }
