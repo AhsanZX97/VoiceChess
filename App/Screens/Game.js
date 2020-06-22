@@ -19,50 +19,21 @@ export default class Game extends Component {
       turn: 'white',
       recognized: '',
       started: '',
-      results: ["test"]
+      result: "test"
     }
-    Voice.onSpeechStart = this.onSpeechStart.bind(this)
-    Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this)
-    Voice.onSpeechResults = this.onSpeechResults.bind(this)
+    Voice.onSpeechResults = (res) => {
+      this.setState({
+        result: res.value[0]
+      })
+    }
   }
 
-  onSpeechStart(e) {
-    this.setState({
-      started: '√',
-    });
-    console.log("onspeechstart")
-  }
-  onSpeechRecognized(e) {
-    this.setState({
-      recognized: '√',
-    });
-    console.log("onspeechrecognised")
-  }
-  onSpeechResults(e) {
-    this.setState({
-      results: e.value,
-    });
-    console.log("onspeechresults")
-  }
-
-  async _startRecognition(e) {
-    this.setState({
-      recognized: '',
-      started: '',
-      results: [],
-    });
-    try {
-      console.log("in try")
-      await Voice.start('en-US');
-    } catch (e) {
-      console.error(e);
-    }
+  voiceFunc(i) {
+    Voice.start("en-us")
   }
 
   handleClick(i) {
     const squares = this.state.squares.slice();
-
-    console.log("handled click")
 
     if (this.state.sourceSelection === -1) {
       if (!squares[i] || squares[i].player !== this.state.player) {
@@ -76,7 +47,6 @@ export default class Game extends Component {
           status: "Choose destination for the selected piece",
           sourceSelection: i
         });
-        console.log(this.state.status)
       }
     }
   }
@@ -99,12 +69,12 @@ export default class Game extends Component {
         />
         <Button
           title="Voice"
-          onPress={this._startRecognition.bind(this)}
+          onPress={() => this.voiceFunc()}
           style={{
             marginBottom: 30
           }}
         />
-        {this.state.results.map((result, index) => <Text> {result}</Text> )}
+        <Text>{this.state.result}</Text>
 
       </View>
     );
