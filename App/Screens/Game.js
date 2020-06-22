@@ -5,6 +5,17 @@ import Helper from '../Helper'
 import Voice from '@react-native-community/voice';
 import { Icon } from 'react-native-elements'
 
+const letter2num = {
+  'A':1,
+  'B':2,
+  'C':3,
+  'D':4,
+  'E':5,
+  'F':6,
+  'G':7,
+  'H':8
+}
+
 export default class Game extends Component {
 
   constructor() {
@@ -25,11 +36,16 @@ export default class Game extends Component {
       this.setState({
         result: res.value[0]
       })
+      this.movePiece(this.state.result)
     }
   }
 
   voiceFunc(i) {
     Voice.start("en-us")
+  }
+
+  movePiece(coordinate) {
+    var first = coordinate[0]
   }
 
   handleClick(i) {
