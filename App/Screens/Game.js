@@ -43,9 +43,12 @@ export default class Game extends Component {
   voiceFunc(i) {
     Voice.start("en-us")
   }
-
+// 28
   movePiece(coordinate) {
-    var first = coordinate[0]
+    var first = letter2num[coordinate[0]]
+    var second = parseInt(coordinate[1]) - 1
+
+    var co = (first - 1) + (8 * second)
   }
 
   handleClick(i) {
