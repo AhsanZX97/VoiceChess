@@ -29,6 +29,15 @@ export default class Square extends React.Component {
         }
     }
 
+    hasPiece() {
+        if (this.state.piece == undefined) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 
     render() {
 
