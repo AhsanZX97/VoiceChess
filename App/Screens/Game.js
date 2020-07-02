@@ -49,6 +49,7 @@ export default class Game extends Component {
     var second = parseInt(coordinate[1]) - 1
 
     var co = (first - 1) + (8 * second)
+    this.state.squares[co].hasPiece();
   }
 
   handleClick(i) {
